@@ -5,4 +5,4 @@
 
 个人博客：[http://blog.battcn.com/](http://blog.battcn.com/ "http://blog.battcn.com/")
 
-一起来学SpringCloud之-注册中心（Eureka/Consul）  ：[输入链接说明](http://blog.battcn.com/2017/07/25/spring-cloud-discovery/)
+一起来学SpringCloud之-注册中心（Eureka/Consul）  ：[http://blog.battcn.com/2017/07/25/spring-cloud-discovery/](http://blog.battcn.com/2017/07/25/spring-cloud-discovery/)
