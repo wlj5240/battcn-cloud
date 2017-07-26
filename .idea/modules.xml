@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/battcn-cloud.iml" filepath="$PROJECT_DIR$/.idea/battcn-cloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/battcn-cloud-discovery/battcn-cloud-discovery.iml" filepath="$PROJECT_DIR$/battcn-cloud-discovery/battcn-cloud-discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/battcn-cloud-hello/battcn-cloud-hello.iml" filepath="$PROJECT_DIR$/battcn-cloud-hello/battcn-cloud-hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/battcn-cloud-ribbon/battcn-cloud-ribbon.iml" filepath="$PROJECT_DIR$/battcn-cloud-ribbon/battcn-cloud-ribbon.iml" />
     </modules>
   </component>
 </project>

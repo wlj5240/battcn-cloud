@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/battcn-cloud-discovery" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/battcn-cloud-hello" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/battcn-cloud-ribbon" charset="UTF-8" />
   </component>
 </project>
