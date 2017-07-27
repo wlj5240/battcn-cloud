@@ -1,0 +1,46 @@
+server:
+  port: 8766
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 100000
+
+spring:
+  application:
+    name: battcn-feign-hi
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true
+      discovery:
+        enabled: true
+        prefer-ip-address: true
+
+#以下就是需要写的配置，注意base-package就可以了
+swagger:
+  enable: true  #是否开启Swagger
+  api-info:
+    description: ${spring.application.name}
+    license: ${spring.application.name}
+    license-url: http://blog.battcn.com
+    terms-of-service-url: http://blog.battcn.com
+    title: 鏖战八方
+    version: "@project.version@"
+    contact:
+      email: 1837307557@qq.com
+      name: 挽歌
+      url: http://blog.battcn.com
+  docket:
+    base-package: com.battcn.controller   #扫描路径，建议以Controller的父包为主
+    group-name: ${spring.application.name}
+
