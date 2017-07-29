@@ -2,6 +2,8 @@ package com.battcn.controller;
 
 import com.battcn.client.HelloClient;
 import com.battcn.pojo.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/hi")
 public class HiController {
 
+    static Logger LOGGER = LoggerFactory.getLogger(HiController.class);
+
     @Autowired
     HelloClient helloClient;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public Student find(@RequestParam("name") String name) {
+    public Student find(@RequestParam("name") String name,@RequestHeader(name="token",required = false)String token) {
         // TODO：只是演示Feign调用的方法
-        return helloClient.findStudentByName(name);
+        LOGGER.info("[Token] - [{}]",token);
+        return helloClient.findStudentByName(name,token);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

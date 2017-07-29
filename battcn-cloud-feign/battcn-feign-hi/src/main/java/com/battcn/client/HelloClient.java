@@ -3,7 +3,6 @@ package com.battcn.client;
 import com.battcn.pojo.Student;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,7 +13,7 @@ public interface HelloClient {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/hello")
-    Student findStudentByName(@RequestParam("name") String name);
+    Student findStudentByName(@RequestParam("name") String name,@RequestHeader(name="token",required = false)String token);
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/hello")
