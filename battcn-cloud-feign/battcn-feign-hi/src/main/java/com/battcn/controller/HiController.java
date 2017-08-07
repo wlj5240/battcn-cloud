@@ -46,10 +46,4 @@ public class HiController {
         helloClient.deleteStudent(studentId);
     }
 
-
-    @PatchMapping("/{studentId}/active")
-    public void active(@RequestBody Student student,@PathVariable("studentId") Long studentId){
-        helloClient.active(student,studentId);
-    }
-
 }

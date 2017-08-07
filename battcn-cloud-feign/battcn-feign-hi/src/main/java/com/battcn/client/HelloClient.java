@@ -27,6 +27,4 @@ public interface HelloClient {
     @DeleteMapping("/hello/{studentId}")
     void deleteStudent(@PathVariable("studentId") Long studentId);
 
-    @PatchMapping("/hello/{studentId}/active")
-    void active(@RequestBody Student student,@PathVariable("studentId") Long studentId);
 }
