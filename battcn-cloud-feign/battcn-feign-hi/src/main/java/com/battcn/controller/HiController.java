@@ -45,4 +45,11 @@ public class HiController {
         // TODO：只是演示Feign调用的方法
         helloClient.deleteStudent(studentId);
     }
+
+
+    @PatchMapping("/{studentId}/active")
+    public void active(@RequestBody Student student,@PathVariable("studentId") Long studentId){
+        helloClient.active(student,studentId);
+    }
+
 }

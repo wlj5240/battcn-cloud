@@ -50,4 +50,8 @@ public class HelloController {
         // TODO：不做具体代码实现，只打印Log
         LOGGER.info("[根据编号删除学生] - [{}]", studentId);
     }
+    @PatchMapping("/{studentId}/active")
+    public void active(@RequestBody Student student,@PathVariable("studentId") Long studentId) {
+        LOGGER.info("[根据编号激活学生] - [{}]", studentId);
+    }
 }
