@@ -28,7 +28,7 @@ public class SkipPathRequestMatcher implements RequestMatcher {
 	 */
 	public SkipPathRequestMatcher(List<String> paths) {
 		Assert.notNull(paths, "路径不能为空");
-		matchers = new OrRequestMatcher(paths.stream().map(path -> new AntPathRequestMatcher(path)).collect(Collectors.toList()));
+		matchers = new OrRequestMatcher(paths.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList()));
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class SkipPathRequestMatcher implements RequestMatcher {
 	@Deprecated
 	public SkipPathRequestMatcher(List<String> pathsToSkip, List<String> paths) {
 		Assert.notNull(pathsToSkip, "路径不能为空");
-		List<RequestMatcher> m = pathsToSkip.stream().map(path -> new AntPathRequestMatcher(path)).collect(Collectors.toList());
+		List<RequestMatcher> m = pathsToSkip.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList());
 		matchers = new OrRequestMatcher(m);
 		if(CollectionUtils.isNotEmpty(paths))
 		{

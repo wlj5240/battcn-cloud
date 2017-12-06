@@ -16,7 +16,8 @@ public class UserRoleService {
 
     public List<UserRole> getRoleByUser(UserInfo user) {
         if("test".equals(user.getUserName())) {
-            return Lists.newArrayList(new UserRole("ADMIN"));
+            //@see ExpressionUrlAuthorizationConfigurer  private static String hasAnyRole(String... authorities) 带 ROLE_
+            return Lists.newArrayList(new UserRole("ROLE_ADMIN"));
         }
         return null;
     }
