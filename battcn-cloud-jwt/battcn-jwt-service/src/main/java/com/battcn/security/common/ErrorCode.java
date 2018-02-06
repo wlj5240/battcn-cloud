@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * 
  * @author Levin
  *
- * @time 2017-05-25
+ * @since 2017-05-25
  */
 public enum ErrorCode {
     GLOBAL(2),

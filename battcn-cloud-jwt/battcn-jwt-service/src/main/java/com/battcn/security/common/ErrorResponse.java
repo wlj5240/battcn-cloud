@@ -9,7 +9,7 @@ import java.util.Date;
  * 
  * @author Levin
  *
- * @time 2017-05-25
+ * @since 2017-05-25
  */
 public class ErrorResponse {
 

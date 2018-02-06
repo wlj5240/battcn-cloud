@@ -6,10 +6,9 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.List;
 
 /**
- * 
  * @author Levin
- *
- * 2017-05-25
+ *         <p>
+ *         2017-05-25
  */
 public class UserContext {
     private final String username;
@@ -19,7 +18,7 @@ public class UserContext {
         this.username = username;
         this.authorities = authorities;
     }
-    
+
     public static UserContext create(String username, List<GrantedAuthority> authorities) {
         if (StringUtils.isBlank(username)) throw new IllegalArgumentException("Username is blank: " + username);
         return new UserContext(username, authorities);

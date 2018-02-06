@@ -9,7 +9,9 @@ public class UserRole {
     private String roleName;
 
 
-    public UserRole(){}
+    public UserRole() {
+    }
+
     public UserRole(String roleName) {
         this.roleName = roleName;
     }

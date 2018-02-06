@@ -4,10 +4,8 @@ import io.jsonwebtoken.Claims;
 
 /**
  * 验证Token
- * 
- * @author vladimir.stankovic
  *
- *         May 31, 2016
+ * @author Levin
  */
 public final class AccessToken implements Token {
     private final String rawToken;

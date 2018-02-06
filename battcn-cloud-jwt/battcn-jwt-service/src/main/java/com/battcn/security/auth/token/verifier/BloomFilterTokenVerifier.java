@@ -4,10 +4,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * Token验证过滤器
- * 
- * @author Levin
  *
- * @time 2017-05-25
+ * @author Levin
+ * @since 2017-05-25
  */
 @Component
 public class BloomFilterTokenVerifier implements TokenVerifier {

@@ -18,10 +18,9 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * Token创建工厂类 {@link Token}.
- * 
- * @author Levin
  *
- * @time 2017-05-25
+ * @author Levin
+ * @since 2017-05-25
  */
 @Component
 public class TokenFactory {
@@ -35,29 +34,31 @@ public class TokenFactory {
 
     /**
      * 利用JJWT 生成 Token
+     *
      * @param context
      * @return
      */
-	public AccessToken createAccessToken(UserContext context) {
-        Optional.ofNullable(context.getUsername()).orElseThrow(()-> new IllegalArgumentException("Cannot create Token without username"));
-        Optional.ofNullable(context.getAuthorities()).orElseThrow(()-> new IllegalArgumentException("User doesn't have any privileges"));
+    public AccessToken createAccessToken(UserContext context) {
+        Optional.ofNullable(context.getUsername()).orElseThrow(() -> new IllegalArgumentException("Cannot create Token without username"));
+        Optional.ofNullable(context.getAuthorities()).orElseThrow(() -> new IllegalArgumentException("User doesn't have any privileges"));
         Claims claims = Jwts.claims().setSubject(context.getUsername());
         claims.put("scopes", context.getAuthorities().stream().map(Object::toString).collect(toList()));
         LocalDateTime currentTime = LocalDateTime.now();
         String token = Jwts.builder()
-          .setClaims(claims)
-          .setIssuer(properties.getIssuer())
-          .setIssuedAt(Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant()))
-          .setExpiration(Date.from(currentTime
-              .plusMinutes(properties.getExpirationTime())
-              .atZone(ZoneId.systemDefault()).toInstant()))
-          .signWith(SignatureAlgorithm.HS512, properties.getSigningKey())
-        .compact();
+                .setClaims(claims)
+                .setIssuer(properties.getIssuer())
+                .setIssuedAt(Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(currentTime
+                        .plusMinutes(properties.getExpirationTime())
+                        .atZone(ZoneId.systemDefault()).toInstant()))
+                .signWith(SignatureAlgorithm.HS512, properties.getSigningKey())
+                .compact();
         return new AccessToken(token, claims);
     }
 
     /**
      * 生成 刷新 RefreshToken
+     *
      * @param userContext
      * @return
      */
@@ -69,15 +70,15 @@ public class TokenFactory {
         Claims claims = Jwts.claims().setSubject(userContext.getUsername());
         claims.put("scopes", Collections.singletonList(Scopes.REFRESH_TOKEN.authority()));
         String token = Jwts.builder()
-          .setClaims(claims)
-          .setIssuer(properties.getIssuer())
-          .setId(UUID.randomUUID().toString())
-          .setIssuedAt(Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant()))
-          .setExpiration(Date.from(currentTime
-              .plusMinutes(properties.getRefreshExpTime())
-              .atZone(ZoneId.systemDefault()).toInstant()))
-          .signWith(SignatureAlgorithm.HS512, properties.getSigningKey())
-        .compact();
+                .setClaims(claims)
+                .setIssuer(properties.getIssuer())
+                .setId(UUID.randomUUID().toString())
+                .setIssuedAt(Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(currentTime
+                        .plusMinutes(properties.getRefreshExpTime())
+                        .atZone(ZoneId.systemDefault()).toInstant()))
+                .signWith(SignatureAlgorithm.HS512, properties.getSigningKey())
+                .compact();
 
         return new AccessToken(token, claims);
     }

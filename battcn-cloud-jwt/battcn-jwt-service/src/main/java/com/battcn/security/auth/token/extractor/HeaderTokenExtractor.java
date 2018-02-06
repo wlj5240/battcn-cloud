@@ -7,10 +7,9 @@ import org.springframework.stereotype.Component;
 /**
  * 一个实现 {@link TokenExtractor} 接口 获取Token
  * 授权：Bearer scheme
- * 
- * @author Levin
  *
- * @time 2017-08-15
+ * @author Levin
+ * @since 2017-08-15
  */
 @Component
 public class HeaderTokenExtractor implements TokenExtractor {

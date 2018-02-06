@@ -21,13 +21,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-
 /**
  * 认证成功处理程序
- * 
- * @author Levin
  *
- * @time 2017-05-25
+ * @author Levin
+ * @since 2017-05-25
  */
 @Component
 public class AwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -42,12 +40,12 @@ public class AwareAuthenticationSuccessHandler implements AuthenticationSuccessH
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-            Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException, ServletException {
         UserContext userContext = (UserContext) authentication.getPrincipal();
-        
+
         AccessToken accessToken = tokenFactory.createAccessToken(userContext);
         Token refreshToken = tokenFactory.createRefreshToken(userContext);
-        
+
         JSONObject tokenMap = new JSONObject();
         tokenMap.put("claims", accessToken.getClaims());
         tokenMap.put("token", accessToken.getToken());
@@ -63,11 +61,10 @@ public class AwareAuthenticationSuccessHandler implements AuthenticationSuccessH
     /**
      * Removes temporary authentication-related data which may have been stored
      * in the session during the authentication process..
-     * 
      */
     protected final void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        
+
         if (session == null) {
             return;
         }

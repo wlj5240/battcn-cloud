@@ -1,5 +1,14 @@
 package com.battcn.security.model.token;
 
+/**
+ * @author Levin
+ */
 public interface Token {
-	String getToken();
+
+    /**
+     * 获取 Token
+     *
+     * @return Token
+     */
+    String getToken();
 }

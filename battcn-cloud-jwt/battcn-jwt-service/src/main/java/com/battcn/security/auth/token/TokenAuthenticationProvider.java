@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toList;
  * 
  * @author Levin
  *
- * @time 2017-05-25
+ * @since 2017-05-25
  */
 @Component
 public class TokenAuthenticationProvider implements AuthenticationProvider {

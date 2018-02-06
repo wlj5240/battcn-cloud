@@ -24,9 +24,9 @@ import java.io.IOException;
 /**
  * 执行Token的验证
  * 
- * @author vladimir.stankovic
+ * @author Levin
  *
- * Aug 5, 2016
+ * 2018-02-02
  */
 public class TokenAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
     private final AuthenticationFailureHandler failureHandler;

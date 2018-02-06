@@ -12,7 +12,7 @@ import java.util.Optional;
  * Token刷新工具类
  *
  * @author Levin
- * @time 2017-08-15
+ * @since 2017-08-15
  */
 public class RefreshToken implements Token {
     private Jws<Claims> claims;

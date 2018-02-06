@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * 
  * @author Levin
  *
- * @time 2017-05-25
+ * @since 2017-05-25
  */
 @Configuration
 public class PasswordEncoderConfig {

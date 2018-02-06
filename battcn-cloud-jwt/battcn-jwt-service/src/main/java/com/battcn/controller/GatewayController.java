@@ -6,7 +6,7 @@ import com.battcn.security.auth.token.extractor.TokenExtractor;
 import com.battcn.security.auth.token.verifier.TokenVerifier;
 import com.battcn.security.config.TokenProperties;
 import com.battcn.security.config.WebSecurityConfig;
-import com.battcn.security.exceptions.InvalidToken;
+import com.battcn.security.exceptions.InvalidTokenException;
 import com.battcn.security.model.UserContext;
 import com.battcn.security.model.token.RawAccessToken;
 import com.battcn.security.model.token.RefreshToken;
@@ -34,19 +34,22 @@ import java.util.stream.Collectors;
 @RestController
 public class GatewayController {
 
-    @Autowired
-    private TokenProperties tokenProperties;
-    @Autowired
-    private TokenVerifier tokenVerifier;
-    @Autowired
-    private TokenFactory tokenFactory;
-    @Autowired
-    private TokenExtractor tokenExtractor;
+    private final TokenProperties tokenProperties;
+    private final TokenVerifier tokenVerifier;
+    private final TokenFactory tokenFactory;
+    private final TokenExtractor tokenExtractor;
+    private final UserInfoService userInfoService;
+    private final UserRoleService userRoleService;
 
     @Autowired
-    private UserInfoService userInfoService;
-    @Autowired
-    private UserRoleService userRoleService;
+    public GatewayController(TokenProperties tokenProperties, TokenVerifier tokenVerifier, TokenFactory tokenFactory, TokenExtractor tokenExtractor, UserInfoService userInfoService, UserRoleService userRoleService) {
+        this.tokenProperties = tokenProperties;
+        this.tokenVerifier = tokenVerifier;
+        this.tokenFactory = tokenFactory;
+        this.tokenExtractor = tokenExtractor;
+        this.userInfoService = userInfoService;
+        this.userRoleService = userRoleService;
+    }
 
 
     @GetMapping("/test1")
@@ -68,12 +71,11 @@ public class GatewayController {
     public Token refreshToken(HttpServletRequest request) {
         String tokenPayload = tokenExtractor.extract(request.getHeader(WebSecurityConfig.TOKEN_HEADER_PARAM));
         RawAccessToken rawToken = new RawAccessToken(tokenPayload);
-        RefreshToken refreshToken = RefreshToken.create(rawToken, tokenProperties.getSigningKey()).orElseThrow(() -> new InvalidToken("Token验证失败"));
-
+        RefreshToken refreshToken = RefreshToken.create(rawToken, tokenProperties.getSigningKey()).orElseThrow(() -> new InvalidTokenException("Token验证失败"));
 
         String jti = refreshToken.getJti();
         if (!tokenVerifier.verify(jti)) {
-            throw new InvalidToken("Token验证失败");
+            throw new InvalidTokenException("Token验证失败");
         }
 
         String subject = refreshToken.getSubject();
