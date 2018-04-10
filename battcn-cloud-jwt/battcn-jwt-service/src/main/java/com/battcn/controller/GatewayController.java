@@ -67,7 +67,7 @@ public class GatewayController {
         return "test3";
     }
 
-    @GetMapping("/refresh_token")
+    @GetMapping("/api/auth/refresh_token")
     public Token refreshToken(HttpServletRequest request) {
         String tokenPayload = tokenExtractor.extract(request.getHeader(WebSecurityConfig.TOKEN_HEADER_PARAM));
         RawAccessToken rawToken = new RawAccessToken(tokenPayload);

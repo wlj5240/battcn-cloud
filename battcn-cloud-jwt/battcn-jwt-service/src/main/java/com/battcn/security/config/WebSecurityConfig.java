@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String FORM_BASED_LOGIN_ENTRY_POINT = "/api/auth/login";
     private static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/api/**";
     private static final String MANAGE_TOKEN_BASED_AUTH_ENTRY_POINT = "/manage/**";
-    private static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/token";
+    private static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/refresh_token";
 
     private final RestAuthenticationEntryPoint authenticationEntryPoint;
     private final AuthenticationSuccessHandler successHandler;
