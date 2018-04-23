@@ -10,7 +10,7 @@ public enum RoleEnum {
 
     private String desc;
 
-    public String getDesc() {
+    public String desc() {
         return desc;
     }
 
